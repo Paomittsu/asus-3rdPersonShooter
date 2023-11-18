@@ -28,7 +28,7 @@ public class AimStateManager : MonoBehaviour
     {
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
         hipFov = vCam.m_Lens.FieldOfView;
-        anim = GetComponentInChildren<Animator>();
+        anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         SwitchState(Hip);
     }

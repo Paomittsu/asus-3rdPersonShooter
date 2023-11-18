@@ -13,7 +13,7 @@ public class AimStateManager : MonoBehaviour
     public HipFireState Hip = new HipFireState();
     public AimState Aim = new AimState();
 
-    [SerializeField] Transform aimPos;
+    public Transform aimPos;
     [SerializeField] float aimSmoothSpeed = 20;
     [SerializeField] LayerMask aimMask;
 

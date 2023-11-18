@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class AimStateManager : MonoBehaviour
 {
-    //public Cinemachine.AxisState xAxis, yAxis;
     float xAxis, yAxis;
     [SerializeField] Transform camFollowPos;
     [SerializeField] float mouseSens = 1;
 
-
+    AimBaseState currentState;
+    public HipFireState Hip = new HipFireState();
+    public AimState Aim = new AimState();
 
     [SerializeField] Transform aimPos;
     [SerializeField] float aimSmoothSpeed = 20;
     [SerializeField] LayerMask aimMask;
 
-    // Start is called before the first frame update
+    [HideInInspector] public Animator anim;
+
     void Start()
     {
+        anim = GetComponentInChildren<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
+        SwitchState(Hip);
     }
 
     // Update is called once per frame
@@ -36,12 +40,21 @@ public class AimStateManager : MonoBehaviour
         if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
         {
             aimPos.position =  Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
-        }    
+        }
+
+        currentState.UpdateState(this);
+
     }
 
     private void LateUpdate()
     {
         camFollowPos.localEulerAngles = new Vector3(yAxis, camFollowPos.localEulerAngles.y, camFollowPos.localEulerAngles.z);
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, xAxis, transform.eulerAngles.z);
+    }
+
+    public void SwitchState(AimBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
     }
 }

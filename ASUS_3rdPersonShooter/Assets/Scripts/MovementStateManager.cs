@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class MovementStateManager : MonoBehaviour
 {
-    public float moveSpeed = 3;
+    public float currentMoveSpeed;
+    public float walkSpeed = 3, walkBackSpeed = 2;
+    public float runSpeed = 7, runBackSpeed = 5;
+    public float crouchSpeed = 2, crouchBackSpeed = 1;
     [HideInInspector] public Vector3 dir;
     float hzInput, vInput;
     CharacterController controller;

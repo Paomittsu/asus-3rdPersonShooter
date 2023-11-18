@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovmentStateManager : MonoBehaviour
+public class MovementStateManager : MonoBehaviour
 {
     public float moveSpeed = 3;
     [HideInInspector] public Vector3 dir;
@@ -16,9 +16,22 @@ public class MovmentStateManager : MonoBehaviour
 
     [SerializeField] float gravity = -9.81f;
     Vector3 velocity;
+
+    MovementBaseState currentState;
+
+    public IdleState Idle = new IdleState();
+    public WalkState Walk = new WalkState();
+    public CrouchState Crouch = new CrouchState();
+    public RunState Run = new RunState();
+
+    [HideInInspector] public Animator anim;
+
     void Start()
     {
+
+        anim = GetComponentInChildren<Animator>();
         controller = GetComponent<CharacterController>();
+        SwitchState(Idle);
     }
 
     // Update is called once per frame
@@ -26,6 +39,17 @@ public class MovmentStateManager : MonoBehaviour
     {
         getDirectionAndMove();
         Gravity();
+
+        // anim.SetFloat("Horizontal", Horizontal);
+        // anim.SetFloat("Vertical", Vertical);
+
+        currentState.UpdateState(this);
+    }
+
+    public void SwitchState(MovementBaseState state)
+    {
+        currentState = state;
+        currentState.EnterState(this);
     }
 
     void getDirectionAndMove()

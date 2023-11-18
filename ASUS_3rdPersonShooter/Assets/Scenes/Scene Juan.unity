@@ -208,7 +208,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: c8a60d1b8077d96468ccb8966f78e894,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.09000003
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c8a60d1b8077d96468ccb8966f78e894,
         type: 3}
@@ -1712,8 +1712,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2958c61410f5d634c919cd04809dcfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  currentMoveSpeed: 0
+  walkSpeed: 3
+  walkBackSpeed: 2
+  runSpeed: 7
+  runBackSpeed: 5
+  crouchSpeed: 2
+  crouchBackSpeed: 1
   dir: {x: 0, y: 0, z: 0}
+  hzInput: 0
+  vInput: 0
   groundYOffset: 0.6
   groundMask:
     serializedVersion: 2

@@ -15,7 +15,7 @@ public class WalkState : MovementBaseState
         else if (Input.GetKeyDown(KeyCode.C)) ExitState(movement, movement.Crouch);
         else if (movement.dir.magnitude < 0.1f) ExitState(movement, movement.Idle);
 
-        if(movement.VInput < 0) movement.currentMoveSpeed = movement.walkBackSpeed;
+        if(movement.vInput < 0) movement.currentMoveSpeed = movement.walkBackSpeed;
         else movement.currentMoveSpeed = movement.walkSpeed;
     }
 

@@ -9,7 +9,7 @@ public class MovementStateManager : MonoBehaviour
     public float runSpeed = 7, runBackSpeed = 5;
     public float crouchSpeed = 2, crouchBackSpeed = 1;
     [HideInInspector] public Vector3 dir;
-    float hzInput, vInput;
+    [HideInInspector] public float hzInput, vInput;
     CharacterController controller;
 
     [SerializeField] float groundYOffset;
@@ -60,7 +60,7 @@ public class MovementStateManager : MonoBehaviour
 
         dir = transform.forward * vInput + transform.right * hzInput;
 
-        controller.Move(dir.normalized * moveSpeed * Time.deltaTime);
+        controller.Move(dir.normalized * currentMoveSpeed * Time.deltaTime);
     }
     
     bool isGrounded()

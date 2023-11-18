@@ -18,8 +18,8 @@ public class CrouchState : MovementBaseState
             else ExitState(movement, movement.Walk);
         }
 
-        if(movement.VInput < 0) movement.currentMoveSpeed = movement.crouchBackSpeed;
-        else movement.currentMoveSpeed = movement.crouchspeed;
+        if(movement.vInput < 0) movement.currentMoveSpeed = movement.crouchBackSpeed;
+        else movement.currentMoveSpeed = movement.crouchSpeed;
     }
 
     void ExitState(MovementStateManager movement, MovementBaseState state)

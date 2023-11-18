@@ -11,7 +11,6 @@ public class MovementStateManager : MonoBehaviour
     [HideInInspector] public Vector3 dir;
     float hzInput, vInput;
     CharacterController controller;
-    // Start is called before the first frame update
 
     [SerializeField] float groundYOffset;
     [SerializeField] LayerMask groundMask;
@@ -37,7 +36,6 @@ public class MovementStateManager : MonoBehaviour
         SwitchState(Idle);
     }
 
-    // Update is called once per frame
     void Update()
     {
         getDirectionAndMove();

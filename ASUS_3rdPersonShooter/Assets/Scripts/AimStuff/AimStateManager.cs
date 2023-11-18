@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class AimStateManager : MonoBehaviour
 {
@@ -17,9 +18,16 @@ public class AimStateManager : MonoBehaviour
     [SerializeField] LayerMask aimMask;
 
     [HideInInspector] public Animator anim;
+    [HideInInspector] public CinemachineVirtualCamera vCam;
+    public float adsFov = 40;
+    [HideInInspector] public float hipFov;
+    [HideInInspector] public float currentFov;
+    public float fovSmoothSpeed = 10;
 
     void Start()
     {
+        vCam = GetComponentInChildren<CinemachineVirtualCamera>();
+        hipFov = vCam.m_Lens.FieldOfView;
         anim = GetComponentInChildren<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         SwitchState(Hip);
@@ -33,6 +41,8 @@ public class AimStateManager : MonoBehaviour
         xAxis += Input.GetAxisRaw("Mouse X") * mouseSens;
         yAxis -= Input.GetAxisRaw("Mouse Y") * mouseSens;
         yAxis = Mathf.Clamp(yAxis, -80, 80);
+
+        vCam.m_Lens.FieldOfView = Mathf.Lerp(vCam.m_Lens.FieldOfView, currentFov, fovSmoothSpeed * Time.deltaTime);
 
         Vector2 screenCentre = new Vector2(Screen.width/2, Screen.height/2);
         Ray ray = Camera.main.ScreenPointToRay(screenCentre);

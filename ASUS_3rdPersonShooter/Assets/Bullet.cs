@@ -6,7 +6,8 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] float timeToDestroy;
     [HideInInspector] public WeaponManager weapon;
-    
+
+    [SerializeField] ParticleSystem explosion = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,8 @@ public class Bullet : MonoBehaviour
             EnemyHealth enemyHealth = collision.gameObject.GetComponentInParent<EnemyHealth>();
             enemyHealth.TakeDamage(weapon.damage);
         }
-        Destroy(this.gameObject);
+        this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        explosion.Play();
+        Destroy(this.gameObject, 0.5f);
     }
 }

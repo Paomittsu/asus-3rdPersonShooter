@@ -24,6 +24,8 @@ public class Bullet : MonoBehaviour
             enemyHealth.TakeDamage(weapon.damage);
         }
         this.gameObject.GetComponent<MeshRenderer>().enabled = false;
+        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX | 
+            RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
         explosion.Play();
         Destroy(this.gameObject, 0.5f);
     }

@@ -13,7 +13,8 @@ public class RobotFreeAnim : MonoBehaviour {
 	{
 		anim = gameObject.GetComponent<Animator>();
 		gameObject.transform.eulerAngles = rot;
-	}
+        anim.SetBool("Walk_Anim", true);
+    }
 
 	// Update is called once per frame
 	void Update()

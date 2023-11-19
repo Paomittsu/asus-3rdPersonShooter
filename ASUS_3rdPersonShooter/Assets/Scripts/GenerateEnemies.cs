@@ -23,8 +23,8 @@ public class GenerateEnemies : MonoBehaviour
             xPos = Random.Range(40, 54);
             zPos = Random.Range(24, 32);
 
-            Instantiate(theEnemy, new Vector3(xPos, 1, zPos), Quaternion.identity);
-            yield return new WaitForSeconds(5);
+            Instantiate(theEnemy, new Vector3(xPos, 0, zPos), Quaternion.identity);
+            yield return new WaitForSeconds(10);
             enemyCount += 1;
         }
     }

@@ -21,10 +21,12 @@ public class WeaponManager : MonoBehaviour
     AudioSource audioSource;
     WeaponAmmo ammo;
     ActionStateManager actions;
+    WeaponRecoil recoil;
 
     // Start is called before the first frame update
     void Start()
     {
+        recoil = GetComponent<WeaponRecoil>();
         audioSource = GetComponent<AudioSource>();
         aim = GetComponentInParent<AimStateManager>();
         ammo = GetComponent<WeaponAmmo>();
@@ -55,6 +57,7 @@ public class WeaponManager : MonoBehaviour
         fireRateTimer = 0;
         barrelPos.LookAt(aim.aimPos);
         audioSource.PlayOneShot(gunShot);
+        recoil.TriggerRecoil();
         ammo.currentAmmo--;
         for (int i = 0; i < bulletsPerShot; i++)
         {

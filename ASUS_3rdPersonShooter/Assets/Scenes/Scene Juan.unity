@@ -10283,6 +10283,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 140695458}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &464812941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 464812942}
+  m_Layer: 7
+  m_Name: RecoilFollowPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &464812942
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464812941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9220935739745490694}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526022812
 GameObject:
   m_ObjectHideFlags: 0
@@ -11216,8 +11247,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 9220935739745490694}
-  m_Follow: {fileID: 9220935739745490694}
+  m_LookAt: {fileID: 464812942}
+  m_Follow: {fileID: 464812942}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
@@ -17784,6 +17815,7 @@ GameObject:
   - component: {fileID: 1757418701}
   - component: {fileID: 1757418702}
   - component: {fileID: 3469287837161884256}
+  - component: {fileID: 3469287837161884257}
   m_Layer: 7
   m_Name: AK-47
   m_TagString: Untagged
@@ -18560,6 +18592,22 @@ MonoBehaviour:
   magInSound: {fileID: 8300000, guid: 29ff97669552f694381b4a72b47de684, type: 3}
   magOutSound: {fileID: 8300000, guid: 1aed76bf288c2ca4e89b24dd942d4b70, type: 3}
   releaseSlideSound: {fileID: 8300000, guid: 10d9312ce26cb394381649fa48f4330b, type: 3}
+--- !u!114 &3469287837161884257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149509087040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae06e5ff2185ce449e21e892ad9bdd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recoilFollowPos: {fileID: 464812942}
+  kickBackAmount: -1
+  kickBackSpeed: 10
+  returnSpeed: 20
 --- !u!137 &3479062518536992177
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -20757,7 +20805,8 @@ Transform:
   m_LocalPosition: {x: 1, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 464812942}
   m_Father: {fileID: 1019192916567759904}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807

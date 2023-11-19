@@ -12047,7 +12047,7 @@ MonoBehaviour:
   semiAuto: 0
   bullet: {fileID: 7573027863260564946, guid: b30d7ce63607e75448c11dd93fd09a6e, type: 3}
   barrelPos: {fileID: 1498458745}
-  bulletVelocity: 5
+  bulletVelocity: 10
   bulletsPerShot: 1
   damage: 20
   gunShot: {fileID: 8300000, guid: c67f571cefac93b46b4524abe4dafdbb, type: 3}

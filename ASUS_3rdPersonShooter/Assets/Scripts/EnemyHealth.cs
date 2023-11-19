@@ -13,15 +13,19 @@ public class EnemyHealth : MonoBehaviour
         {
             health -= damage;
             if (health <= 0) EnemyDeath();
-            Explode();
-            Debug.Log("Hit");
         }
     }
 
     void EnemyDeath()
     {
-        Destroy(this.gameObject);
-        Explode();
+        explosion.Play();
+        foreach (Transform child in transform)
+            if (child.gameObject.name != "enemy_explosion")
+            {
+                child.gameObject.SetActive(false);
+            }
+        this.gameObject.GetComponent<SphereCollider>().enabled = false;
+        Destroy(this.gameObject, 0.5f);
         Debug.Log("Death");
     }
 

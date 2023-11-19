@@ -38,7 +38,7 @@ public class WeaponManager : MonoBehaviour
     void Update()
     {
         if (ShouldFire()) Fire();
-        Debug.Log(ammo.currentAmmo);
+        //Debug.Log(ammo.currentAmmo);
     }
 
     bool ShouldFire()
